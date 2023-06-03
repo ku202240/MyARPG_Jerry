@@ -46,4 +46,16 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+protected:
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Character")
+		void OnDamaged(float Damage, const FHitResult& HitInfo, class ATP_ThirdPersonCharacter* InstigatedCharacter, AActor* DamageCauser);
+
+public:
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	virtual void HandleDamage(float Damage, const FHitResult& HitInfo, class ATP_ThirdPersonCharacter* InstigatedCharacter, AActor* DamageCauser)
+	{
+		OnDamaged(Damage, HitInfo, InstigatedCharacter, DamageCauser);
+	}
+
 };
